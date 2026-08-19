@@ -1,6 +1,6 @@
 // Authoritative Date & Time Handling as per PRD Section 4
 
-export const SEED_REFERENCE_DATE = "2024-08-19";
+export const SEED_REFERENCE_DATE = "2026-08-19";
 
 /**
  * Normalizes any date input to a plain local calendar date (midnight), ignoring time of day.
