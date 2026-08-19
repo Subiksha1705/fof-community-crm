@@ -6,7 +6,7 @@ import { INITIAL_MEMBERS, INITIAL_ACTIVITIES, validateSeedData } from "./seed-da
 import { calculateActivityState } from "./state-engine";
 import { SEED_REFERENCE_DATE } from "./date-utils";
 
-const LOCAL_STORAGE_KEY = "fof-crm-data";
+const LOCAL_STORAGE_KEY = "fof-crm-data-v2";
 
 interface CRMStoreContextType {
   members: Member[];
@@ -56,15 +56,25 @@ export function CRMProvider({ children }: { children: React.ReactNode }) {
         console.log("✓ Seed data validation passed:", validation.distribution);
       }
 
+      // Clear legacy storage key if present
+      localStorage.removeItem("fof-crm-data");
+
       // Check localStorage for persisted user edits
       const savedData = localStorage.getItem(LOCAL_STORAGE_KEY);
       if (savedData) {
         const parsed = JSON.parse(savedData);
-        if (parsed.members && Array.isArray(parsed.members)) {
-          setMembers(parsed.members);
-        }
-        if (parsed.activities && Array.isArray(parsed.activities)) {
-          setActivities(parsed.activities);
+        // Ensure saved data is from 2026 reference timeline
+        const hasLegacy2024Data = parsed.activities && parsed.activities.some((a: any) => a.date && a.date.startsWith("2024"));
+        if (hasLegacy2024Data) {
+          console.warn("Legacy 2024 localStorage data detected. Resetting to 2026 seed dataset.");
+          localStorage.removeItem(LOCAL_STORAGE_KEY);
+        } else {
+          if (parsed.members && Array.isArray(parsed.members)) {
+            setMembers(parsed.members);
+          }
+          if (parsed.activities && Array.isArray(parsed.activities)) {
+            setActivities(parsed.activities);
+          }
         }
       }
     } catch (err) {

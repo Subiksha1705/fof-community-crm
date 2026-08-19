@@ -21,7 +21,7 @@ export default function FollowUpsPage() {
     <div className="flex-1 flex flex-col min-w-0 bg-zinc-50 dark:bg-zinc-950 pb-16">
       <Header
         title="Follow-ups Required"
-        subtitle={`10-member attention queue (Newly Joined + At Risk + Dormant)`}
+        subtitle={`${followUpMembers.length}-member attention queue (Newly Joined + At Risk + Dormant)`}
         onAddMemberClick={() => setIsAddModalOpen(true)}
       />
 
