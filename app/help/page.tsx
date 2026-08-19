@@ -89,7 +89,10 @@ export default function HelpPage() {
                 <span className="text-[11px] px-2 py-0.5 rounded bg-zinc-200 dark:bg-zinc-700">60+ Days Inactive</span>
               </div>
               <p className="text-zinc-600 dark:text-zinc-400">
-                Last activity date is <strong>≥60 calendar days</strong> ago (or no activities for 60+ days).
+                Last activity date is <strong>≥60 calendar days</strong> ago (for members with recorded activity history, or joined &gt;14 days ago with 0 activities).
+              </p>
+              <p className="text-zinc-500 text-[11px] font-medium pt-1 border-t border-zinc-200 dark:border-zinc-700/60">
+                Note: Members who joined ≤14 days ago with 0 activities are categorized as <strong>Newly Joined</strong> (onboarding) rather than Dormant.
               </p>
             </div>
 

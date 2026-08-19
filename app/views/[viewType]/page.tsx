@@ -16,6 +16,9 @@ export default function FocusedViewPage() {
   const members = getFocusedViewMembers(viewType);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
+  const atRiskCount = members.filter((m) => m.activityState === "AtRisk").length;
+  const dormantCount = members.filter((m) => m.activityState === "Dormant").length;
+
   const viewConfigs: Record<
     typeof viewType,
     { title: string; subtitle: string; icon: string; focusGoal: string }
@@ -24,22 +27,19 @@ export default function FocusedViewPage() {
       title: "Newly Joined Members View",
       subtitle: "Focus on onboarding & encouraging first community contribution",
       icon: "🌱",
-      focusGoal:
-        "4 Members in Onboarding: Help them introduce themselves or ask a question in their Primary Space within their first 14 days.",
+      focusGoal: `${members.length} Members in Onboarding: Help them introduce themselves or ask a question in their Primary Space within their first 14 days.`,
     },
     "highly-active": {
       title: "Highly Active Members View",
       subtitle: "Identify core contributors, guest writers, and peer mentors",
       icon: "🔥",
-      focusGoal:
-        "4 Highly Active Members: Recognize strong contributions, invite to facilitate roundtables or contribute guest posts.",
+      focusGoal: `${members.length} Highly Active Members: Recognize strong contributions, invite to facilitate roundtables or contribute guest posts.`,
     },
     "at-risk-dormant": {
       title: "At Risk & Dormant Members View",
       subtitle: "Re-engagement evaluation and light check-in decision queue",
       icon: "💤",
-      focusGoal:
-        "6 Silent Members (3 At Risk, 3 Dormant): Evaluate whether to surface relevant peer discussions or let dormant members rest.",
+      focusGoal: `${members.length} Silent Members (${atRiskCount} At Risk, ${dormantCount} Dormant): Evaluate whether to surface relevant peer discussions or let dormant members rest.`,
     },
   };
 
@@ -47,7 +47,7 @@ export default function FocusedViewPage() {
     title: "Focused View",
     subtitle: "Custom member view",
     icon: "📋",
-    focusGoal: "Review member activity and take targeted actions.",
+    focusGoal: `${members.length} members in custom view.`,
   };
 
   return (

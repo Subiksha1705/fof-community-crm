@@ -61,8 +61,18 @@ export function calculateActivityState(
   let state: ActivityState = "Active";
   let reason = "";
 
-  // Rule 1: Dormant (daysInactive >= 60)
-  if (daysInactive >= 60) {
+  // Check zero-activity members first to avoid leaking 999 daysInactive sentinel
+  if (totalActivities === 0) {
+    if (daysSinceJoined <= 14) {
+      state = "NewlyJoined";
+      reason = `New member in onboarding period (joined ${daysSinceJoined} calendar days ago). No community activity recorded yet.`;
+    } else {
+      state = "Dormant";
+      reason = `Member joined ${daysSinceJoined} calendar days ago but has no recorded community activity.`;
+    }
+  }
+  // Rule 1: Dormant (last activity >= 60 calendar days ago)
+  else if (daysInactive >= 60) {
     state = "Dormant";
     reason = `Member has been inactive for ${daysInactive} calendar days (>= 60 days).`;
   }
@@ -83,19 +93,14 @@ export function calculateActivityState(
   // Rule 4: Newly Joined (joinedDate <= 14 days and totalActivities < 2)
   else if (daysSinceJoined <= 14 && totalActivities < 2) {
     state = "NewlyJoined";
-    reason = `New member in onboarding period (joined ${daysSinceJoined} days ago, ${totalActivities} activities).`;
+    reason = `New member in onboarding period (joined ${daysSinceJoined} days ago, ${totalActivities} activity).`;
   }
   // Rule 5: Active (>= 1 activity in last 30 days)
   else if (activitiesInLast30Days >= 1) {
     state = "Active";
     reason = `Member has steady community participation (${activitiesInLast30Days} activity in the last 30 days).`;
   }
-  // Fallback 1: brand new with no activity at all
-  else if (totalActivities === 0 && daysSinceJoined <= 14) {
-    state = "NewlyJoined";
-    reason = "New member in onboarding period. No community activity recorded yet.";
-  }
-  // Fallback 2: Default Active
+  // Fallback: Default Active
   else {
     state = "Active";
     reason = "Member maintains general active status.";
