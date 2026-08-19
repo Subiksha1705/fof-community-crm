@@ -444,7 +444,19 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     createdAt: "2026-08-07T15:00:00Z",
   },
 
-  // 6. Meera Iyer (Newly Joined - 0 activities)
+  // 6. Meera Iyer (Newly Joined - 1 activity)
+  {
+    id: "act-6-1",
+    memberId: "m6",
+    date: "2026-08-16",
+    space: "Say Hello",
+    type: "Introduction",
+    description: "Introduced herself to the community as Senior Finance Analyst at Cedar Analytics",
+    engagement: "Low",
+    recordedBy: "Community Team",
+    recordedAt: "2026-08-16T10:00:00Z",
+    createdAt: "2026-08-16T10:00:00Z",
+  },
 
   // 7. Vikram Menon (Active)
   {
@@ -626,7 +638,19 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     createdAt: "2026-05-15T09:00:00Z",
   },
 
-  // 13. Rahul Joshi (Newly Joined - 0 activities)
+  // 13. Rahul Joshi (Newly Joined - 1 activity)
+  {
+    id: "act-13-1",
+    memberId: "m13",
+    date: "2026-08-18",
+    space: "Tools & Systems",
+    type: "Question",
+    description: "Asked a peer question about ERP implementation timelines",
+    engagement: "Low",
+    recordedBy: "Community Team",
+    recordedAt: "2026-08-18T11:00:00Z",
+    createdAt: "2026-08-18T11:00:00Z",
+  },
 
   // 14. Tanya Menon (At Risk)
   {
