@@ -229,7 +229,7 @@ export default function DashboardPage() {
               <div className="space-y-2">
                 <Link
                   href="/views/newly-joined"
-                  className="p-3 rounded-lg border border-blue-200 dark:border-blue-900/60 bg-blue-50/50 dark:bg-blue-950/30 hover:bg-blue-50 flex items-center justify-between block transition-colors"
+                  className="p-3 rounded-lg border border-blue-200 dark:border-blue-900/60 bg-blue-50/50 dark:bg-blue-950/30 hover:bg-blue-100/80 dark:hover:bg-blue-900/50 flex items-center justify-between transition-colors group"
                 >
                   <div>
                     <div className="text-xs font-bold text-blue-900 dark:text-blue-200">
@@ -239,12 +239,12 @@ export default function DashboardPage() {
                       Help members make first contribution
                     </div>
                   </div>
-                  <span className="text-xs font-bold text-blue-700">→</span>
+                  <span className="text-xs font-bold text-blue-700 dark:text-blue-300 group-hover:translate-x-0.5 transition-transform">→</span>
                 </Link>
 
                 <Link
                   href="/views/highly-active"
-                  className="p-3 rounded-lg border border-teal-200 dark:border-teal-900/60 bg-teal-50/50 dark:bg-teal-950/30 hover:bg-teal-50 flex items-center justify-between block transition-colors"
+                  className="p-3 rounded-lg border border-teal-200 dark:border-teal-900/60 bg-teal-50/50 dark:bg-teal-950/30 hover:bg-teal-100/80 dark:hover:bg-teal-900/50 flex items-center justify-between transition-colors group"
                 >
                   <div>
                     <div className="text-xs font-bold text-teal-900 dark:text-teal-200">
@@ -254,12 +254,12 @@ export default function DashboardPage() {
                       Identify guest posts & interviews
                     </div>
                   </div>
-                  <span className="text-xs font-bold text-teal-700">→</span>
+                  <span className="text-xs font-bold text-teal-700 dark:text-teal-300 group-hover:translate-x-0.5 transition-transform">→</span>
                 </Link>
 
                 <Link
                   href="/views/at-risk-dormant"
-                  className="p-3 rounded-lg border border-amber-200 dark:border-amber-900/60 bg-amber-50/50 dark:bg-amber-950/30 hover:bg-amber-50 flex items-center justify-between block transition-colors"
+                  className="p-3 rounded-lg border border-amber-200 dark:border-amber-900/60 bg-amber-50/50 dark:bg-amber-950/30 hover:bg-amber-100/80 dark:hover:bg-amber-900/50 flex items-center justify-between transition-colors group"
                 >
                   <div>
                     <div className="text-xs font-bold text-amber-900 dark:text-amber-200">
@@ -269,7 +269,7 @@ export default function DashboardPage() {
                       Evaluate re-engagement strategy
                     </div>
                   </div>
-                  <span className="text-xs font-bold text-amber-700">→</span>
+                  <span className="text-xs font-bold text-amber-700 dark:text-amber-300 group-hover:translate-x-0.5 transition-transform">→</span>
                 </Link>
               </div>
             </div>
